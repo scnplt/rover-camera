@@ -2,6 +2,7 @@ package dev.sertan.android.rovercamera.data.api
 
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth
+import dev.sertan.android.rovercamera.data.NasaApi
 import dev.sertan.android.rovercamera.util.NasaApiUtils
 import org.junit.Before
 import org.junit.Test

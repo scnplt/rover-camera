@@ -1,4 +1,4 @@
-package dev.sertan.android.rovercamera.data.api
+package dev.sertan.android.rovercamera.data
 
 import dev.sertan.android.rovercamera.data.model.Node
 import dev.sertan.android.rovercamera.util.NasaApiUtils
