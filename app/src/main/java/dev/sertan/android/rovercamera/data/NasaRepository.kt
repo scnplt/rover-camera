@@ -14,7 +14,11 @@ class NasaRepository @Inject constructor(private val nasaApi: NasaApi) {
         camera: String? = null
     ) = flow {
         emit(State.LOADING)
-        val node = nasaApi.getNode(sol, earthDate, page, camera).await()
-        emit(if (node == null) State.ERROR else State.LOADED(node))
+        try {
+            val node = nasaApi.getNode(sol, earthDate, page, camera).await()
+            emit(if (node == null) State.ERROR else State.LOADED(node))
+        }catch (e: Exception) {
+            emit(State.ERROR)
+        }
     }
 }
