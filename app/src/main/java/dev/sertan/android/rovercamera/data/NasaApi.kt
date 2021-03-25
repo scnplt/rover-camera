@@ -14,5 +14,5 @@ interface NasaApi {
         @Query("page") page: Int? = null,
         @Query("camera") camera: String? = null,
         @Query("api_key") apiKey: String = NasaApiUtils.API_KEY
-    ): Call<Node>
+    ): Call<Node?>
 }
