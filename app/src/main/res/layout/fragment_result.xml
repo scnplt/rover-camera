@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.result.ResultFragment">
 
-    <data />
+    <data>
+
+        <variable
+            name="model"
+            type="dev.sertan.android.rovercamera.ui.result.ResultViewModel" />
+    </data>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -11,8 +17,32 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/resultFragmentRecyclerView"
+            isVisible="@{model.isStateLoadedLiveData}"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            tools:visibility="gone" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/resultFragmentErrorText"
+            isVisible="@{model.isStateErrorLiveData}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/error_please_try_again"
+            android:textSize="@dimen/sp_size_l"
+            tools:visibility="gone" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/resultFragmentProgress"
+            isVisible="@{model.isStateLoadingLiveData}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:indeterminate="true"
+            app:indicatorColor="@color/black"
+            app:indicatorSize="@dimen/dp_size_xxl"
+            app:trackColor="@color/primaryDarkColor" />
+
     </FrameLayout>
 
 </layout>

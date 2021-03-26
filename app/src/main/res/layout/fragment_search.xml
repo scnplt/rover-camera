@@ -4,15 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.search.SearchFragment">
 
-    <data />
+    <data>
+
+        <variable
+            name="model"
+            type="dev.sertan.android.rovercamera.ui.search.SearchViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/dp_size_l"
-        tools:context=".ui.fragment.SearchFragment">
+        android:padding="@dimen/dp_size_l">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/searchFragmentAppNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,14 +35,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dp_size_xl"
+            android:onClick="@{() -> model.changeDateType()}"
             android:padding="@dimen/dp_size_m"
-            android:text="@string/earth_date"
+            android:text="@{model.isDateTypeSol ? @string/earth_date : @string/sol}"
             android:textSize="@dimen/sp_size_m"
             app:layout_constraintBottom_toTopOf="@id/searchFragmentSolEditText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchFragmentAppNameText" />
+            app:layout_constraintTop_toBottomOf="@id/searchFragmentAppNameText"
+            tools:text="@string/earth_date" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/searchFragmentSolEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,48 +56,53 @@
             android:maxLength="@integer/sol_max_length"
             android:maxLines="@integer/sol_and_earth_date_max_lines"
             android:padding="@dimen/dp_size_l"
+            android:text="@={model.sol}"
             android:textSize="@dimen/sp_size_l"
             app:layout_constraintBottom_toTopOf="@id/searchFragmentCameraText"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/searchFragmentDateTypeButton" />
 
-        <EditText
+        <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/searchFragmentEarthDateText"
+            isVisible="@{!model.isDateTypeSol}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_1"
-            android:hint="@string/date"
+            android:hint="@string/earth_date_hint"
             android:importantForAutofill="no"
             android:inputType="date"
             android:maxLength="@integer/earth_date_max_length"
             android:maxLines="@integer/sol_and_earth_date_max_lines"
             android:padding="@dimen/dp_size_l"
+            android:text="@={model.earthDate}"
             android:textSize="@dimen/sp_size_l"
-            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@id/searchFragmentSolEditText"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@id/searchFragmentSolEditText"
             app:layout_constraintTop_toTopOf="@id/searchFragmentSolEditText" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/searchFragmentCameraText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dp_size_xl"
             android:background="@drawable/bg_1"
+            android:onClick="@{model::showCameraPopupMenu}"
             android:padding="@dimen/dp_size_l"
-            android:text="@string/camera_button_text"
+            android:text="@{model.selectedCamera}"
             android:textSize="@dimen/sp_size_l"
             app:layout_constraintBottom_toTopOf="@id/searchFragmentSearchButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/searchFragmentSolEditText" />
+            app:layout_constraintTop_toBottomOf="@id/searchFragmentSolEditText"
+            tools:text="@string/all" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/searchFragmentSearchButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:onClick="@{model::search}"
             android:padding="@dimen/dp_size_l"
             android:text="@string/search"
             android:textSize="@dimen/sp_size_m"

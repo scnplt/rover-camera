@@ -5,9 +5,26 @@
     <string name="search">Search</string>
     <string name="camera_button_text">ALL</string>
     <string name="date">Date</string>
+    <string name="sol">Sol</string>
     <string name="sol_no">Sol No</string>
     <string name="earth_date">Earth Date</string>
+    <string name="earth_date_hint">Earth Date (YYYY-MM-DD)</string>
+    <string name="sol_error_convert_string_to_int">Sol must be number!</string>
+    <string name="sol_and_earth_date_are_blank">Sol and earth date are blank!</string>
+
+    <!-- Search Fragment - Camera Menu -->
+    <string name="all">ALL</string>
+    <string name="fhaz">FHAZ</string>
+    <string name="rhaz">RHAZ</string>
+    <string name="mast">MAST</string>
+    <string name="chemcam">CHEMCAM</string>
+    <string name="mahli">MAHLI</string>
+    <string name="mardi">MARDI</string>
+    <string name="navcam">NAVCAM</string>
+    <string name="pancam">PANCAM</string>
+    <string name="minites">MINITES</string>
 
     <!-- Result Fragment Recycler Item -->
     <string name="photo">Photo</string>
+    <string name="error_please_try_again">Error! Please try again.</string>
 </resources>
