@@ -10,17 +10,23 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 
 abstract class BaseFragment<DB : ViewDataBinding> : Fragment() {
-    lateinit var binding: DB
+    var binding: DB? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        return binding.root
+        binding!!.lifecycleOwner = viewLifecycleOwner
+        return binding!!.root
     }
 
     @LayoutRes
     abstract fun getLayoutId(): Int
+
+    override fun onDestroyView() {
+        binding = null
+        super.onDestroyView()
+    }
 }
