@@ -4,7 +4,7 @@ fun String?.toIntOrZero(): Int = try { this!!.toInt() } catch (e: Exception) { 0
 
 fun String.httpToHttps() : String {
     val http = "http://"
-    val index = this.indexOf(http)
+    val index = indexOf(http)
     if (index == -1) return this
-    return "https://${this.substring(index + http.length)}"
+    return "https://${substring(index + http.length)}"
 }

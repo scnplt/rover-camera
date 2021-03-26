@@ -65,7 +65,7 @@
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/searchFragmentEarthDateText"
-            isVisible="@{!model.isDateTypeSol}"
+            is_visible="@{!model.isDateTypeSol}"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_1"
@@ -112,4 +112,5 @@
             app:layout_constraintTop_toBottomOf="@id/searchFragmentCameraText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>
