@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dp_size_xxs">1dp</dimen>
+    <dimen name="dp_size_xs">2dp</dimen>
+    <dimen name="dp_size_s">4dp</dimen>
+    <dimen name="dp_size_m">8dp</dimen>
+    <dimen name="dp_size_l">16dp</dimen>
+    <dimen name="dp_size_xl">32dp</dimen>
+    <dimen name="dp_size_xxl">64dp</dimen>
+
+    <dimen name="sp_size_s">18sp</dimen>
+    <dimen name="sp_size_m">26sp</dimen>
+    <dimen name="sp_size_l">34sp</dimen>
+    <dimen name="sp_size_xl">42sp</dimen>
+    <dimen name="sp_size_xxl">50sp</dimen>
+</resources>
