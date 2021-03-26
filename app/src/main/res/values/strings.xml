@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Rover Camera</string>
+
+    <!-- Search Fragment -->
+    <string name="search">Search</string>
+    <string name="camera_button_text">ALL</string>
+    <string name="date">Date</string>
+    <string name="sol_no">Sol No</string>
+    <string name="earth_date">Earth Date</string>
+
+    <!-- Result Fragment Recycler Item -->
+    <string name="photo">Photo</string>
 </resources>

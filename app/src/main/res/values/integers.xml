@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Search Fragment -->
+    <integer name="sol_max_length">4</integer>
+    <integer name="sol_and_earth_date_max_lines">1</integer>
+    <integer name="earth_date_max_length">10</integer>
+</resources>
