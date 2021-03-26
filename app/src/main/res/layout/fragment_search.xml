@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.search.SearchFragment">
+
+    <data />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/dp_size_l"
+        tools:context=".ui.fragment.SearchFragment">
+
+        <TextView
+            android:id="@+id/searchFragmentAppNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_size_xl"
+            android:fontFamily="@font/advent_pro_medium"
+            android:text="@string/app_name"
+            android:textSize="@dimen/sp_size_xxl"
+            app:layout_constraintBottom_toTopOf="@id/searchFragmentDateTypeButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/searchFragmentDateTypeButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_size_xl"
+            android:padding="@dimen/dp_size_m"
+            android:text="@string/earth_date"
+            android:textSize="@dimen/sp_size_m"
+            app:layout_constraintBottom_toTopOf="@id/searchFragmentSolEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchFragmentAppNameText" />
+
+        <EditText
+            android:id="@+id/searchFragmentSolEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_size_xl"
+            android:background="@drawable/bg_1"
+            android:hint="@string/sol_no"
+            android:importantForAutofill="no"
+            android:inputType="number"
+            android:maxLength="@integer/sol_max_length"
+            android:maxLines="@integer/sol_and_earth_date_max_lines"
+            android:padding="@dimen/dp_size_l"
+            android:textSize="@dimen/sp_size_l"
+            app:layout_constraintBottom_toTopOf="@id/searchFragmentCameraText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchFragmentDateTypeButton" />
+
+        <EditText
+            android:id="@+id/searchFragmentEarthDateText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_1"
+            android:hint="@string/date"
+            android:importantForAutofill="no"
+            android:inputType="date"
+            android:maxLength="@integer/earth_date_max_length"
+            android:maxLines="@integer/sol_and_earth_date_max_lines"
+            android:padding="@dimen/dp_size_l"
+            android:textSize="@dimen/sp_size_l"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@id/searchFragmentSolEditText"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@id/searchFragmentSolEditText"
+            app:layout_constraintTop_toTopOf="@id/searchFragmentSolEditText" />
+
+        <TextView
+            android:id="@+id/searchFragmentCameraText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp_size_xl"
+            android:background="@drawable/bg_1"
+            android:padding="@dimen/dp_size_l"
+            android:text="@string/camera_button_text"
+            android:textSize="@dimen/sp_size_l"
+            app:layout_constraintBottom_toTopOf="@id/searchFragmentSearchButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchFragmentSolEditText" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/searchFragmentSearchButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_size_l"
+            android:text="@string/search"
+            android:textSize="@dimen/sp_size_m"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/searchFragmentCameraText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
