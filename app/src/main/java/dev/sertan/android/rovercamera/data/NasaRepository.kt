@@ -8,28 +8,15 @@ import kotlinx.coroutines.flow.flow
 import retrofit2.await
 import javax.inject.Inject
 
-class NasaRepository @Inject constructor(
-    @ApplicationContext private val context: Context,
-    private val nasaApi: NasaApi
-) {
+class NasaRepository @Inject
+constructor(@ApplicationContext private val context: Context, private val nasaApi: NasaApi) {
 
-    fun getPhotos(
-        sol: Int? = null,
-        earthDate: String? = null,
-        page: Int? = null,
-        camera: String? = null
-    ) = flow {
+    fun getPhotos(sol: Int? = null, earthDate: String? = null, page: Int? = null, camera: String? = null) = flow {
         emit(State.LOADING)
         try {
-            val node = nasaApi.getNode(
-                sol,
-                earthDate,
-                page,
-                if (camera == context.getString(R.string.all)) null else camera
-            ).await()
+            val mCamera = if (camera == context.getString(R.string.all)) null else camera
+            val node = nasaApi.getNode(sol, earthDate, page, mCamera).await()
             emit(if (node == null) State.ERROR else State.LOADED(node))
-        } catch (e: Exception) {
-            emit(State.ERROR)
-        }
+        } catch (e: Exception) { emit(State.ERROR) }
     }
 }

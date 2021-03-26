@@ -4,4 +4,8 @@
     <integer name="sol_max_length">4</integer>
     <integer name="sol_and_earth_date_max_lines">1</integer>
     <integer name="earth_date_max_length">10</integer>
+
+    <!-- Anim -->
+    <integer name="anim_duration_s">300</integer>
+    <integer name="anim_duration_m">600</integer>
 </resources>

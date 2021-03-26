@@ -30,14 +30,15 @@ class ResultFragment(private val adapter: ResultAdapter) : BaseFragment<Fragment
 
     private fun search() = viewModel.search(args.sol, args.earthDate, camera = args.camera)
 
-    private fun setupRecyclerViewAdapter() {
-        binding?.resultFragmentRecyclerView?.layoutManager = GridLayoutManager(requireContext(), 3)
-        binding?.resultFragmentRecyclerView?.adapter = adapter
-
+    private fun setupRecyclerViewAdapter() = with(binding?.resultFragmentRecyclerView) {
+        this?.layoutManager = GridLayoutManager(requireContext(), 3)
+        this?.adapter = adapter
     }
 
-    private fun setupListener() = viewModel.stateLiveData.observe(viewLifecycleOwner) {
-        if (it is State.LOADED<*>) adapter.photos = (it.data as Node).photos
+    private fun setupListener() {
+        viewModel.stateLiveData.observe(viewLifecycleOwner) {
+            if (it is State.LOADED<*>) adapter.photos = (it.data as Node).photos
+        }
+        binding?.resultFragmentSwipeRefresh?.setOnRefreshListener { search() }
     }
-
 }

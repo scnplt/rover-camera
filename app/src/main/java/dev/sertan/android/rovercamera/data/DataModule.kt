@@ -18,8 +18,6 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit = Retrofit.Builder()
-        .baseUrl(NasaApiUtils.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+    fun provideRetrofit(): Retrofit = Retrofit.Builder().baseUrl(NasaApiUtils.BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create()).build()
 }
