@@ -9,6 +9,9 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
+/**
+ * This module is for dependency injection with Hilt.
+ */
 @Module
 @InstallIn(SingletonComponent::class)
 object DataModule {
