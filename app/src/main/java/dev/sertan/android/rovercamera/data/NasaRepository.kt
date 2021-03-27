@@ -8,9 +8,13 @@ import kotlinx.coroutines.flow.flow
 import retrofit2.await
 import javax.inject.Inject
 
+/**
+ * This repo is for get data with the api.
+ * @param context provided by Hilt.
+ * @param nasaApi provided by Hilt.
+ */
 class NasaRepository @Inject
 constructor(@ApplicationContext private val context: Context, private val nasaApi: NasaApi) {
-
     fun getPhotos(
         sol: Int? = null,
         earthDate: String? = null,
