@@ -11,9 +11,12 @@ import dev.sertan.android.rovercamera.data.model.Node
 import dev.sertan.android.rovercamera.databinding.FragmentResultBinding
 import dev.sertan.android.rovercamera.ui.base.BaseFragment
 import dev.sertan.android.rovercamera.util.State
+import javax.inject.Inject
 
 @AndroidEntryPoint
-class ResultFragment(private val adapter: ResultAdapter) : BaseFragment<FragmentResultBinding>() {
+class ResultFragment : BaseFragment<FragmentResultBinding>() {
+    @Inject
+    lateinit var adapter: ResultAdapter
     private val args: ResultFragmentArgs by navArgs()
     private val viewModel: ResultViewModel by viewModels()
 
@@ -24,18 +27,21 @@ class ResultFragment(private val adapter: ResultAdapter) : BaseFragment<Fragment
         binding?.model = viewModel
 
         search()
-        setupListener()
+        setupListeners()
         setupRecyclerViewAdapter()
     }
 
-    private fun search() = viewModel.search(args.sol, args.earthDate, camera = args.camera)
+    private fun search() {
+        viewModel.search(args.sol, args.earthDate, camera = args.camera)
+    }
+
 
     private fun setupRecyclerViewAdapter() = with(binding?.resultFragmentRecyclerView) {
         this?.layoutManager = GridLayoutManager(requireContext(), 3)
         this?.adapter = adapter
     }
 
-    private fun setupListener() {
+    private fun setupListeners() {
         viewModel.stateLiveData.observe(viewLifecycleOwner) {
             if (it is State.LOADED<*>) adapter.photos = (it.data as Node).photos
         }
