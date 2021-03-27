@@ -12,12 +12,14 @@ import javax.inject.Inject
 @SmallTest
 @HiltAndroidTest
 class NasaApiTest {
-    @get:Rule val hiltRule = HiltAndroidRule(this)
+    @get:Rule
+    val hiltRule = HiltAndroidRule(this)
 
-    @Inject lateinit var nasaApi: NasaApi
+    @Inject
+    lateinit var nasaApi: NasaApi
 
     @Before
-    fun setup(){
+    fun setup() {
         hiltRule.inject()
     }
 

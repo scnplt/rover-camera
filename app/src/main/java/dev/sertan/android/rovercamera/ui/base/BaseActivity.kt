@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 
-abstract class BaseActivity <DB: ViewDataBinding> : AppCompatActivity() {
+abstract class BaseActivity<DB : ViewDataBinding> : AppCompatActivity() {
     private lateinit var binding: DB
 
     override fun onCreate(savedInstanceState: Bundle?) {

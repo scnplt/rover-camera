@@ -24,7 +24,12 @@ class ResultViewModel @Inject constructor(private val nasaRepo: NasaRepository) 
         stateLiveData.value = value
     }
 
-    fun search(sol: Int? = null, earthDate: String? = null, page: Int? = null, camera: String? = null) {
+    fun search(
+        sol: Int? = null,
+        earthDate: String? = null,
+        page: Int? = null,
+        camera: String? = null
+    ) {
         val mSol = if (sol == -1) null else sol
         viewModelScope.launch {
             nasaRepo.getPhotos(mSol, earthDate, page, camera).collect { setState(it) }

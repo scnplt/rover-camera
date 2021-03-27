@@ -14,10 +14,14 @@ import javax.inject.Singleton
 object DataModule {
     @Provides
     @Singleton
-    fun provideNasaApi(retrofit: Retrofit): NasaApi = retrofit.create(NasaApi::class.java)
+    fun provideNasaApi(retrofit: Retrofit): NasaApi {
+        return retrofit.create(NasaApi::class.java)
+    }
 
     @Provides
     @Singleton
-    fun provideRetrofit(): Retrofit = Retrofit.Builder().baseUrl(NasaApiUtils.BASE_URL)
-        .addConverterFactory(GsonConverterFactory.create()).build()
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder().baseUrl(NasaApiUtils.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create()).build()
+    }
 }

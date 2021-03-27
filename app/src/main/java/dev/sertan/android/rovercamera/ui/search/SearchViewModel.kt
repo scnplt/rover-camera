@@ -22,7 +22,9 @@ class SearchViewModel @Inject constructor(@ApplicationContext context: Context) 
     val earthDate = MutableLiveData<String>()
     val sol = MutableLiveData<String>()
 
-    fun changeDateType() = isDateTypeSol.value?.let { isDateTypeSol.value = !it }
+    fun changeDateType() = isDateTypeSol.value?.let {
+        isDateTypeSol.value = !it
+    }
 
     fun showCameraPopupMenu(view: View) {
         if (cameraPopupMenu == null) cameraPopupMenu = createCameraPopupMenu(view)
@@ -44,12 +46,13 @@ class SearchViewModel @Inject constructor(@ApplicationContext context: Context) 
         view.findNavController().navigate(action)
     }
 
-    private fun createCameraPopupMenu(view: View): PopupMenu =
-        PopupMenu(view.context, view).apply {
+    private fun createCameraPopupMenu(view: View): PopupMenu {
+        return PopupMenu(view.context, view).apply {
             menuInflater.inflate(R.menu.fragment_search_camera_menu, this.menu)
             setOnMenuItemClickListener {
                 selectedCamera.value = it.title.toString()
                 true
             }
         }
+    }
 }
