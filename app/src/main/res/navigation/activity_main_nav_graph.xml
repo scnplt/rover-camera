@@ -25,18 +25,18 @@
         android:name="dev.sertan.android.rovercamera.ui.result.ResultFragment"
         android:label="fragment_result"
         tools:layout="@layout/fragment_result">
-
         <argument
             android:name="earthDate"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="string" />
         <argument
             android:name="sol"
-            app:argType="integer" />
+            app:argType="string" />
         <argument
             android:name="camera"
-            app:argType="string"
-            app:nullable="true" />
+            app:argType="string" />
+        <argument
+            android:name="dateType"
+            app:argType="boolean" />
     </fragment>
 
 </navigation>

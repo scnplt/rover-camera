@@ -27,4 +27,5 @@
     <!-- Result Fragment Recycler Item -->
     <string name="photo">Photo</string>
     <string name="error_please_try_again">Error! Please try again.</string>
+    <string name="not_found">Not found!</string>
 </resources>

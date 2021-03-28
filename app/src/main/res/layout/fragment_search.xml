@@ -14,27 +14,25 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:isScrollContainer="true"
         android:padding="@dimen/dp_size_l">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/searchFragmentAppNameText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_size_xl"
             android:fontFamily="@font/advent_pro_medium"
             android:text="@string/app_name"
             android:textSize="@dimen/sp_size_xxl"
             app:layout_constraintBottom_toTopOf="@id/searchFragmentDateTypeButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_chainStyle="packed" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/searchFragmentDateTypeButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_size_xl"
             android:onClick="@{() -> model.changeDateType()}"
             android:padding="@dimen/dp_size_m"
             android:text="@{model.isDateTypeSol ? @string/earth_date : @string/sol}"
@@ -48,7 +46,6 @@
             android:id="@+id/searchFragmentSolEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_size_xl"
             android:background="@drawable/bg_1"
             android:hint="@string/sol_no"
             android:importantForAutofill="no"
@@ -86,7 +83,6 @@
             android:id="@+id/searchFragmentCameraText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/dp_size_xl"
             android:background="@drawable/bg_1"
             android:onClick="@{model::showCameraPopupMenu}"
             android:padding="@dimen/dp_size_l"

@@ -14,7 +14,6 @@ interface NasaApi {
     fun getNode(
         @Query("sol") sol: Int? = null,
         @Query("earth_date") earthDate: String? = null,
-        @Query("page") page: Int? = null,
         @Query("camera") camera: String? = null,
         @Query("api_key") apiKey: String = NasaApiUtils.API_KEY
     ): Call<Node?>

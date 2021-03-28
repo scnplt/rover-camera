@@ -31,10 +31,7 @@ class ResultFragment : BaseFragment<FragmentResultBinding>() {
         setupRecyclerViewAdapter()
     }
 
-    private fun search() {
-        viewModel.search(args.sol, args.earthDate, camera = args.camera)
-    }
-
+    private fun search() = viewModel.search(args.sol, args.earthDate, args.camera, args.dateType)
 
     private fun setupRecyclerViewAdapter() = with(binding?.resultFragmentRecyclerView) {
         this?.layoutManager = GridLayoutManager(requireContext(), 3)
