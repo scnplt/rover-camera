@@ -7,11 +7,19 @@
         <variable
             name="photo"
             type="dev.sertan.android.rovercamera.data.model.Photo" />
+
+        <variable
+            name="listener"
+            type="dev.sertan.android.rovercamera.ui.result.ResultListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/listChoiceBackgroundIndicator"
+        android:clickable="true"
+        android:focusable="true"
+        android:onClick="@{(view) -> listener.openImageWithUrl(view.context, photo.imgSrc)}"
         android:padding="@dimen/dp_size_xxs">
 
         <ImageView

@@ -5,7 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dev.sertan.android.rovercamera.data.NasaRepository
+import dev.sertan.android.rovercamera.data.model.Node
 import dev.sertan.android.rovercamera.util.State
+import dev.sertan.android.rovercamera.util.extensions.toIntOrZero
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -13,26 +15,16 @@ import javax.inject.Inject
 @HiltViewModel
 class ResultViewModel @Inject constructor(private val nasaRepo: NasaRepository) : ViewModel() {
     val stateLiveData = MutableLiveData<State>()
-    val isStateLoadedLiveData = MutableLiveData(stateLiveData.value is State.LOADED<*>)
-    val isStateErrorLiveData = MutableLiveData(stateLiveData.value is State.ERROR)
-    val isStateLoadingLiveData = MutableLiveData(stateLiveData.value is State.LOADING)
+    val listSize = MutableLiveData(0)
 
-    private fun setState(value: State) {
-        isStateLoadedLiveData.value = value is State.LOADED<*>
-        isStateErrorLiveData.value = value is State.ERROR
-        isStateLoadingLiveData.value = value is State.LOADING
-        stateLiveData.value = value
-    }
-
-    fun search(
-        sol: Int? = null,
-        earthDate: String? = null,
-        page: Int? = null,
-        camera: String? = null
-    ) {
-        val mSol = if (sol == -1) null else sol
+    fun search(sol: String, earthDate: String, camera: String, isDateSol: Boolean) =
         viewModelScope.launch {
-            nasaRepo.getPhotos(mSol, earthDate, page, camera).collect { setState(it) }
+            val flow = if (isDateSol) nasaRepo.getPhotos(sol.toIntOrZero(), null, camera)
+            else nasaRepo.getPhotos(null, earthDate, camera)
+            flow.collect {
+                stateLiveData.value = it
+                listSize.value = if (it is State.LOADED<*>) (it.data as Node).photos.size
+                else 0
+            }
         }
-    }
 }

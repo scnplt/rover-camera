@@ -25,7 +25,7 @@ class NasaApiTest {
 
     @Test
     fun getNode() {
-        val call = nasaApi.getNode(1, "0001-01-01", 1, "fhaz")
+        val call = nasaApi.getNode(1, "0001-01-01", "fhaz")
         val response = call.execute()
         Truth.assertThat(response.body()).isNotNull()
     }
@@ -47,13 +47,6 @@ class NasaApiTest {
     @Test
     fun getNodeWithEarthDate() {
         val call = nasaApi.getNode(earthDate = "0001-01-01")
-        val response = call.execute()
-        Truth.assertThat(response.body()).isNotNull()
-    }
-
-    @Test
-    fun getNodeWithPage() {
-        val call = nasaApi.getNode(page = 0)
         val response = call.execute()
         Truth.assertThat(response.body()).isNotNull()
     }

@@ -1,7 +1,5 @@
 package dev.sertan.android.rovercamera.ui.result
 
-import android.content.Intent
-import android.net.Uri
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import dev.sertan.android.rovercamera.R
@@ -15,13 +13,11 @@ class ResultAdapter @Inject
 constructor() : BaseAdapter<FragmentResultRecyclerItemBinding>() {
 
     private val diffCallback = object : DiffUtil.ItemCallback<Photo>() {
-        override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {
-            return oldItem.id == newItem.id
-        }
+        override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean =
+            oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean {
-            return oldItem.imgSrc == newItem.imgSrc
-        }
+        override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean =
+            oldItem.imgSrc == newItem.imgSrc
     }
 
     private val recyclerListDiffer = AsyncListDiffer(this, diffCallback)
@@ -33,14 +29,10 @@ constructor() : BaseAdapter<FragmentResultRecyclerItemBinding>() {
     override fun onBindViewHolder(
         holder: BaseViewHolder<FragmentResultRecyclerItemBinding>,
         position: Int
-    ) {
-        val photo = photos[position]
-        holder.bind.photo = photo
-        holder.bind.resultFragmentRecyclerItemImg.loadAndStartAnimation(R.anim.recycler_item)
-        holder.bind.resultFragmentRecyclerItemImg.setOnClickListener {
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(photo.imgSrc))
-            it.context.startActivity(intent)
-        }
+    ) = with(holder.bind) {
+        photo = photos[position]
+        listener = ResultListener
+        resultFragmentRecyclerItemImg.loadAndStartAnimation(R.anim.recycler_item)
     }
 
     override fun onViewDetachedFromWindow(holder: BaseViewHolder<FragmentResultRecyclerItemBinding>) {

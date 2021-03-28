@@ -5,14 +5,17 @@
 
     <data>
 
+        <import type="dev.sertan.android.rovercamera.util.State" />
+
         <variable
             name="model"
             type="dev.sertan.android.rovercamera.ui.result.ResultViewModel" />
+
     </data>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/resultFragmentSwipeRefresh"
-        is_refreshing="@{model.isStateLoadingLiveData}"
+        is_refreshing="@{model.stateLiveData instanceof State.LOADING}"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -22,19 +25,28 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/resultFragmentRecyclerView"
-                is_visible="@{model.isStateLoadedLiveData}"
+                is_visible="@{model.stateLiveData instanceof State.LOADED}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scrollbars="vertical"
-                tools:visibility="visible" />
+                android:scrollbars="vertical" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/resultFragmentErrorText"
-                is_visible="@{model.isStateErrorLiveData}"
+                is_visible="@{model.stateLiveData instanceof State.ERROR}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="@string/error_please_try_again"
+                android:textSize="@dimen/sp_size_l"
+                tools:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/resultFragmentNotFound"
+                is_visible="@{model.listSize == 0 &amp;&amp; model.stateLiveData instanceof State.LOADED}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/not_found"
                 android:textSize="@dimen/sp_size_l"
                 tools:visibility="gone" />
 
