@@ -8,9 +8,10 @@ Open the <a href="https://api.nasa.gov/" target="_blank">Nasa OPEN APIs</a> site
 Replace the `DEMO_KEY` in the `NasaApiUtils.kt` file with your own key and then run the application.</br>
 Path of NasaApiUtils.kt: `./app/src/main/java/dev/sertan/android/rovercamera/util/NasaApiUtils.kt`
 ## Screenshots
-<img src="https://raw.githubusercontent.com/scnplt/rover-camera/master/screenshots/search-1.png" width=250>&emsp;
-<img src="https://raw.githubusercontent.com/scnplt/rover-camera/master/screenshots/search-2.png" width=250>&emsp;
-<img src="https://raw.githubusercontent.com/scnplt/rover-camera/master/screenshots/result.png" width=250>
+<img src="https://raw.githubusercontent.com/scnplt/rover-camera/master/screenshots/search-1.png" width=200>&emsp;
+<img src="https://raw.githubusercontent.com/scnplt/rover-camera/master/screenshots/search-2.png" width=200>&emsp;
+<img src="https://raw.githubusercontent.com/scnplt/rover-camera/master/screenshots/result.png" width=200>&emsp;
+<img src="https://raw.githubusercontent.com/scnplt/rover-camera/master/screenshots/info.png" width=200>
 
 ## API
 <a href="https://api.nasa.gov/" target="_blank">Nasa OPEN APIs</a>
