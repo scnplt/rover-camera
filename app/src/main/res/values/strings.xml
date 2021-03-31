@@ -24,8 +24,14 @@
     <string name="pancam">PANCAM</string>
     <string name="minites">MINITES</string>
 
-    <!-- Result Fragment Recycler Item -->
-    <string name="photo">Photo</string>
+    <!-- Result Fragment -->
     <string name="error_please_try_again">Error! Please try again.</string>
     <string name="not_found">Not found!</string>
+
+    <!-- Result Fragment Recycler Item -->
+    <string name="photo">Photo</string>
+    <string name="recycler_item_alert_title">Info</string>
+    <string name="recycler_item_alert_message">Camera: %s\nDate: %s\nRover: %s</string>
+    <string name="recycler_item_alert_negative_btn">OK</string>
+    <string name="recycler_item_alert_positive_btn">Open with browser</string>
 </resources>

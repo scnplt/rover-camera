@@ -10,7 +10,7 @@
 
         <variable
             name="listener"
-            type="dev.sertan.android.rovercamera.ui.result.ResultListener" />
+            type="dev.sertan.android.rovercamera.ui.result.ResultRecyclerListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -19,7 +19,7 @@
         android:background="?attr/listChoiceBackgroundIndicator"
         android:clickable="true"
         android:focusable="true"
-        android:onClick="@{(view) -> listener.openImageWithUrl(view.context, photo.imgSrc)}"
+        android:onClick="@{(view) -> listener.photoClick(view, photo)}"
         android:padding="@dimen/dp_size_xxs">
 
         <ImageView
